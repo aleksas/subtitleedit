@@ -32,6 +32,10 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\src\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
@@ -200,6 +204,8 @@
     <Compile Include="SubtitleFormats\JsonType9.cs" />
     <Compile Include="SubtitleFormats\JsonType8.cs" />
     <Compile Include="SubtitleFormats\MacSub.cs" />
+    <Compile Include="SubtitleFormats\SittingTranscript.cs" />
+    <Compile Include="SubtitleFormats\SittingTranscriptEx.cs" />
     <Compile Include="SubtitleFormats\SubUrbia.cs" />
     <Compile Include="SubtitleFormats\NetflixTimedText.cs" />
     <Compile Include="SubtitleFormats\JsonType7.cs" />
@@ -501,6 +507,9 @@
     <Compile Include="XmlDeserializerGenerator.cs" />
     <Compile Include="XSub.cs" />
     <Compile Include="ZipExtractor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="BeforeCompile">
