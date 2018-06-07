@@ -20295,5 +20295,48 @@ namespace Nikse.SubtitleEdit.Forms
             IsMenuOpen = false;
         }
 
+        private void runCommand(string fileName, string arguments)
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = fileName;
+            startInfo.Arguments = arguments;
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+
+        private void toolStripButtonSplitAudio_Click(object sender, EventArgs e)
+        {
+            if(_subtitle != null && !string.IsNullOrEmpty(_fileName) &&  _subtitle.OriginalFormat is SittingTranscriptEx)
+            {
+                var dir = Path.GetDirectoryName(_fileName);
+                var subdir = "splits";
+                var outDir = Path.Combine(dir, subdir);
+                if (!Directory.Exists(outDir))
+                    Directory.CreateDirectory(outDir);
+
+                var ext = Path.GetExtension(_videoFileName);
+                
+                foreach(var paragraph in _subtitle.Paragraphs)
+                {
+                    var fileName = "ffmpeg.exe";
+                    var format = "-accurate_seek -i \"{0}\" -ss {1:0.000} -t {2:0.000} -acodec copy \"{3}\"";
+
+                    var sMil = paragraph.StartTime.TotalMilliseconds;
+                    var eMil = paragraph.EndTime.TotalMilliseconds;
+
+                    var outFileName = string.Format("{0:000000000}-{1:000000000}{2}", sMil, eMil, ext);
+                    var dstPath = Path.Combine(outDir, outFileName);
+
+                    var start = sMil / 1000.0f;
+                    var duration = (eMil - sMil) / 1000.0f;
+
+                    var arguments = string.Format(format, _videoFileName, start, duration, dstPath);
+
+                    runCommand(fileName, arguments);
+                }
+            }
+        }
     }
 }

@@ -125,6 +125,7 @@
             this.toolStripMenuItemDost = new System.Windows.Forms.ToolStripMenuItem();
             this.DvdStudioProStl = new System.Windows.Forms.ToolStripMenuItem();
             this.eBUSTLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemEdl = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemEdlClipName = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemExportFcpIImage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemImagePerFrame = new System.Windows.Forms.ToolStripMenuItem();
@@ -469,7 +470,7 @@
             this.imageListPlayRate = new System.Windows.Forms.ImageList(this.components);
             this.timerTextUndo = new System.Windows.Forms.Timer(this.components);
             this.timerAlternateTextUndo = new System.Windows.Forms.Timer(this.components);
-            this.toolStripMenuItemEdl = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButtonSplitAudio = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -594,7 +595,8 @@
             this.toolStripSeparatorFrameRate,
             this.toolStripLabelFrameRate,
             this.toolStripComboBoxFrameRate,
-            this.toolStripButtonGetFrameRate});
+            this.toolStripButtonGetFrameRate,
+            this.toolStripButtonSplitAudio});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(975, 40);
@@ -1318,6 +1320,13 @@
             this.eBUSTLToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
             this.eBUSTLToolStripMenuItem.Text = "EBU STL...";
             this.eBUSTLToolStripMenuItem.Click += new System.EventHandler(this.EBustlToolStripMenuItemClick);
+            // 
+            // toolStripMenuItemEdl
+            // 
+            this.toolStripMenuItemEdl.Name = "toolStripMenuItemEdl";
+            this.toolStripMenuItemEdl.Size = new System.Drawing.Size(258, 22);
+            this.toolStripMenuItemEdl.Text = "EDL...";
+            this.toolStripMenuItemEdl.Click += new System.EventHandler(this.ExportToEdl);
             // 
             // toolStripMenuItemEdlClipName
             // 
@@ -4556,12 +4565,15 @@
             this.timerAlternateTextUndo.Interval = 700;
             this.timerAlternateTextUndo.Tick += new System.EventHandler(this.TimerAlternateTextUndoTick);
             // 
-            // toolStripMenuItemEdl
+            // toolStripButtonSplitAudio
             // 
-            this.toolStripMenuItemEdl.Name = "toolStripMenuItemEdl";
-            this.toolStripMenuItemEdl.Size = new System.Drawing.Size(258, 22);
-            this.toolStripMenuItemEdl.Text = "EDL...";
-            this.toolStripMenuItemEdl.Click += new System.EventHandler(this.ExportToEdl);
+            this.toolStripButtonSplitAudio.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSplitAudio.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSplitAudio.Image")));
+            this.toolStripButtonSplitAudio.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSplitAudio.Name = "toolStripButtonSplitAudio";
+            this.toolStripButtonSplitAudio.Size = new System.Drawing.Size(23, 20);
+            this.toolStripButtonSplitAudio.Text = "Split Audio";
+            this.toolStripButtonSplitAudio.Click += new System.EventHandler(this.toolStripButtonSplitAudio_Click);
             // 
             // Main
             // 
@@ -5076,5 +5088,6 @@
         private System.Windows.Forms.ToolStripMenuItem removeSceneChangeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addSceneChangeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemEdl;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSplitAudio;
     }
 }
